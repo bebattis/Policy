@@ -18,13 +18,13 @@
             "equals": "Microsoft.Compute/virtualMachines"
           },
           {
-            "field": "Microsoft.Compute/imageId",
-            "contains": "[concat('resourceGroups', '/' , parameters('imageResourceGroupName'))]"
+            "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType",
+            "equals": "Windows"
           }
         ]
       },
       "then": {
-        "effect": "deployIfNotExists",
+        "effect": "[parameters('effect')]",
         "details": {
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "roleDefinitionIds": [
@@ -152,6 +152,17 @@
           "displayName": "Secret Name",
           "description": "The name of the secret inside the key vault which allows for domain user password."
         }
+      },
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "The effect type for the policy."
+        },
+        "allowedValues": [
+          "disabled",
+          "deployIfNotExists"
+        ]
       }
     }
   }

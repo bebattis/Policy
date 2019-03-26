@@ -1,0 +1,61 @@
+{
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "apiVersion": "2018-05-01",
+    "name": "applyBootDiagnosticsVM",
+    "properties": {
+        "policyType": "Custom",
+        "mode": "all",
+        "displayName": "Apply Boot Diagnostic Settings to Virtual Machines",
+        "description": "This policy appends a default boot diagnostic setting to send logs to a storage account",
+        "metadata": {
+            "category": "Diagnostics"
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Compute/virtualMachines"
+                    },
+                    {
+                        "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics",
+                        "exists": false
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]",
+                "details": [
+                    {
+                        "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled",
+                        "value": true
+                    },
+                    {
+                        "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri",
+                        "value": "[parameters('storageAccountURI')]"
+                    }
+                ]
+            }
+        }
+    },
+    "parameters": {
+        "storageAccountURI": {
+            "type": "String",
+            "metadata": {
+                "description": "The storage account uri for shipping VM diagnostic data to.",
+                "displayName": "Storage Account URI"
+            }
+        },
+        "effect": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Effect",
+                "description": "The effect type for the policy."
+            },
+            "allowedValues": [
+                "disabled",
+                "append"
+            ]
+        }
+    }
+}
