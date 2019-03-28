@@ -1,7 +1,0 @@
-sudo: off
-language: python
-git:
-  depth: false
-  quiet: true
-install:
-  - pip install 

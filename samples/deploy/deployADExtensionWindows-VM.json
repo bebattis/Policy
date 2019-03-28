@@ -1,12 +1,12 @@
 {
   "type": "Microsoft.Authorization/policyDefinitions",
   "apiVersion": "2018-05-01",
-  "name": "DeployADExtensionForCustomImageVMs",
+  "name": "DeployADExtensionForWindowsVMs",
   "properties": {
     "policyType": "Custom",
     "mode": "all",
-    "displayName": "Deploy AD Extension For Custom Image VMs",
-    "description": "This policy Deploys a default Domain Join extension to Virtual Machines deployed from custom images in a Resource Group. Note: Assignment Identity must be provided access to the Azure Key Vault containing the Domain Join Credential.",
+    "displayName": "Deploy AD Extension For Windows VMs",
+    "description": "This policy Deploys a default Domain Join extension to Windows Virtual Machines. Note: Assignment Identity must be provided access to the Azure Key Vault containing the Domain Join Credential.",
     "metadata": {
       "category": "Extensions"
     },
