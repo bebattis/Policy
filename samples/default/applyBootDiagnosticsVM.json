@@ -36,26 +36,26 @@
                     }
                 ]
             }
-        }
-    },
-    "parameters": {
-        "storageAccountURI": {
-            "type": "String",
-            "metadata": {
-                "description": "The storage account uri for shipping VM diagnostic data to.",
-                "displayName": "Storage Account URI"
-            }
         },
-        "effect": {
-            "type": "String",
-            "metadata": {
-                "displayName": "Effect",
-                "description": "The effect type for the policy."
+        "parameters": {
+            "storageAccountURI": {
+                "type": "String",
+                "metadata": {
+                    "description": "The storage account uri for shipping VM diagnostic data to.",
+                    "displayName": "Storage Account URI"
+                }
             },
-            "allowedValues": [
-                "disabled",
-                "append"
-            ]
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "The effect type for the policy."
+                },
+                "allowedValues": [
+                    "disabled",
+                    "append"
+                ]
+            }
         }
     }
 }

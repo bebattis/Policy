@@ -178,35 +178,35 @@
                     }
                 }
             }
-        }
-    },
-    "parameters": {
-        "storageAccountId": {
-            "type": "String",
-            "metadata": {
-                "displayName": "Storage Account Id",
-                "description": "The full resource Id of the Storage Account to store Windows Diagnostic Logs in."
+        },
+        "parameters": {
+            "storageAccountId": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Storage Account Id",
+                    "description": "The full resource Id of the Storage Account to store Windows Diagnostic Logs in."
+                }
+            },
+            "customWADData": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Custom Windows Azure Diagnostic Data",
+                    "description": "A custom XML query which will be added to a default WADCFG file for the agent."
+                },
+                "defaultValue": ""
+            },
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "The effect type for the policy."
+                },
+                "allowedValues": [
+                    "disabled",
+                    "auditIfNotExists",
+                    "deployIfNotExists"
+                ]
             }
-        },
-        "customWADData": {
-            "type": "String",
-            "metadata": {
-                "displayName": "Custom Windows Azure Diagnostic Data",
-                "description": "A custom XML query which will be added to a default WADCFG file for the agent."
-            },
-            "defaultValue": ""
-        },
-        "effect": {
-            "type": "String",
-            "metadata": {
-                "displayName": "Effect",
-                "description": "The effect type for the policy."
-            },
-            "allowedValues": [
-                "disabled",
-                "auditIfNotExists",
-                "deployIfNotExists"
-            ]
         }
     }
 }
